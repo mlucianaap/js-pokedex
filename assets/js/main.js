@@ -7,20 +7,39 @@ let offset = 0;
 
 function convertPokemonToLi(pokemon) {
     return `
-        <li class="pokemon ${pokemon.type}">
-            <span class="number">#${pokemon.number}</span>
-            <span class="name">${pokemon.name}</span>
+        <button class="card-pokemon" onclick="openModal(${pokemon.number})">
+            <li class="pokemon ${pokemon.type}">
+                <span class="number">#${pokemon.number}</span>
+                <span class="name">${pokemon.name}</span>
 
-            <div class="detail">
-                <ol class="types">
-                    ${pokemon.types.map((type) => `<li class="type ${type}">${type}</li>`).join('')}
-                </ol>
+                <div class="detail">
+                    <ol class="types">
+                        ${pokemon.types.map((type) => `<li class="type ${type}">${type}</li>`).join('')}
+                    </ol>
 
-                <img src="${pokemon.photo}"
-                     alt="${pokemon.name}">
-            </div>
-        </li>
+                    <img src="${pokemon.photo}"
+                        alt="${pokemon.name}">
+                </div>
+            </li>
+        </button>
     `
+}
+
+const closeModal = () => {
+    document.querySelector(".modal").style.display = "none";
+}
+
+const openModal = (pokemonId) => {
+    window.scroll(0,0);
+    
+    pokeApi.getPokemonDetailId(pokemonId).then((pokemonApi) => {
+        const pokemon = pokemonApi;
+        document.querySelector(".modal-title").innerHTML = pokemon.name;
+        document.querySelector(".modal-img").src = pokemon.photo;
+        document.querySelector(".modal-paragraph").innerHTML = `Pokémon nº ${pokemon.number}!`;
+    });
+    document.querySelector(".modal").style.display = "flex";
+    document.querySelector("[data-close]").addEventListener("click", closeModal);
 }
 
 function loadPokemonItens(offset, limit) {

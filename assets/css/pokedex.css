@@ -6,6 +6,12 @@
     list-style: none;
 }
 
+h1 {
+    text-align: center;
+    color: #3864D2;
+    font-size: 3.5rem;
+}
+
 .normal {
     background-color: #a6a877;
 }
@@ -78,6 +84,16 @@
     background-color: #f9aec7;
 }
 
+.card-pokemon {
+    background: none;
+    border: none;
+    transition: .3s ease-out;
+}
+
+.card-pokemon:hover {
+    transform: scale(1.1);
+}
+
 .pokemon {
     display: flex;
     flex-direction: column;
@@ -94,6 +110,8 @@
 }
 
 .pokemon .name {
+    text-align: left;
+    font-weight: 700;
     text-transform: capitalize;
     color: #fff;
     margin-bottom: .25rem;
@@ -127,6 +145,13 @@
     height: 70px;
 }
 
+.pokeball {
+    position: absolute;
+    opacity: .2;
+    height: 100%;
+    right: 0;
+}
+
 .pagination {
     display: flex;
     flex-direction: row;
@@ -144,6 +169,77 @@
     background-color: #6c79db;
     border: none;
     border-radius: 1rem;
+    transition: .3s ease;
+}
+
+.pagination button:hover {
+    background-color: #4d569e;
+    cursor: pointer;
+}
+
+.modal {
+    display: none;
+    background-color: #ffffff;
+    padding: 30px 40px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transition: all .3s ease;
+    text-align: center;
+    flex-direction: column;
+}
+
+.modal-title {
+    text-transform: capitalize;
+    font-size: 2.5rem;
+    color: #5438F4;
+    margin: 3rem 0 3rem 0;
+}
+
+.modal-paragraph{
+    font-size: 1.25rem;
+    line-height: 25px;
+}
+
+.modal-img {
+    margin: 0 auto;
+    padding: 1rem;
+    border: 2px solid #f3f3f3;
+    border-radius: 2rem;
+    width: 15%;
+    transition: .3s ease;
+}
+
+.modal-img:hover {
+    background-color: #f3f3f3;
+}
+
+.button-exit {
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    transition: .3s;
+}
+
+.button-exit:hover {
+    transform: translateX(-.5rem);
+}
+
+@media screen and (max-width: 480px) {
+    .modal {
+        padding: 20px 30px;
+        justify-content: space-around;
+    }
+
+    .modal-title {
+        font-size: 2rem;
+        margin: 3rem 0 1rem 0;
+    }
 }
 
 @media screen and (min-width: 380px) {
@@ -158,8 +254,18 @@
     }
 }
 
+@media screen and (max-width: 576px) {
+    .modal-img {
+        width: 100%;
+    }
+}
+
 @media screen and (min-width: 992px) {
     .pokemons {
         grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    .card-pokemon {
+        cursor: pointer;
     }
 }

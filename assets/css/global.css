@@ -1,17 +1,37 @@
 * {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Inter Tight', sans-serif;
     box-sizing: border-box;
 }
 
 body {
-    background-color: #f6f8fc;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+h1, h2 {
+    font-family: 'Gasoek One', sans-serif;
+    font-weight: normal;
+    transform: scale(1, .8);
 }
 
 .content {
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     padding: 1rem;
     background-color: #fff;
+}
+
+.footer {
+    background-color: #f6f8fc;
+    text-align: center;
+    padding: 2rem;
+}
+
+.footer p {
+    color: #878c94;
+    font-size: .9rem;
 }
 
 @media screen and (min-width: 992px) {
