@@ -249,13 +249,21 @@ h1 {
 @media screen and (max-width: 480px) {
     .modal {
         padding: 20px;
-        justify-content: space-around;
     }
 
     .modal-title {
         font-size: 2rem;
         margin: 0;
-        /* margin: 3rem 0 1rem 0; */
+    }
+
+    .modal-img {
+        height: 50%;
+        position: absolute;
+        top: -40%;
+    }
+
+    .modal-body {
+        padding-top: 4rem;
     }
 }
 
