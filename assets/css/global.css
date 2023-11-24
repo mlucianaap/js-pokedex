@@ -10,7 +10,7 @@ body {
     justify-content: space-between;
 }
 
-h1, h2 {
+h1 {
     font-family: 'Gasoek One', sans-serif;
     font-weight: normal;
     transform: scale(1, .8);
