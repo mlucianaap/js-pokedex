@@ -1,3 +1,24 @@
+:root {
+    --normal: #a6a877;
+    --grass: #77c850;
+    --fire: #ee7f30;
+    --water: #678fee;
+    --electric: #f7cf2e;
+    --ice: #98d5d7;
+    --ground: #dfbf69;
+    --flying: #a98ff0;
+    --poison: #a040a0;
+    --fighting: #bf3029;
+    --psychic: #f65687;
+    --dark: #725847;
+    --rock: #b8a137;
+    --bug: #a8b720;
+    --ghost: #6e5896;
+    --steel: #b9b7cf;
+    --dragon: #6f38f6;
+    --fairy: #f9aec7;
+}
+
 .pokemons {
     display: grid;
     grid-template-columns: 1fr;
@@ -13,75 +34,75 @@ h1 {
 }
 
 .normal {
-    background-color: #a6a877;
+    background-color: var(--normal);
 }
 
 .grass {
-    background-color: #77c850;
+    background-color: var(--grass);
 }
 
 .fire {
-    background-color: #ee7f30;
+    background-color: var(--fire);
 }
 
 .water {
-    background-color: #678fee;
+    background-color: var(--water);
 }
 
 .electric {
-    background-color: #f7cf2e;
+    background-color: var(--electric);
 }
 
 .ice {
-    background-color: #98d5d7;
+    background-color: var(--ice);
 }
 
 .ground {
-    background-color: #dfbf69;
+    background-color: var(--ground);
 }
 
 .flying {
-    background-color: #a98ff0;
+    background-color: var(--flying);
 }
 
 .poison {
-    background-color: #a040a0;
+    background-color: var(--poison);
 }
 
 .fighting {
-    background-color: #bf3029;
+    background-color: var(--fighting);
 }
 
 .psychic {
-    background-color: #f65687;
+    background-color: var(--psychic);
 }
 
 .dark {
-    background-color: #725847;
+    background-color: var(--dark);
 }
 
 .rock {
-    background-color: #b8a137;
+    background-color: var(--rock);
 }
 
 .bug {
-    background-color: #a8b720;
+    background-color: var(--bug);
 }
 
 .ghost {
-    background-color: #6e5896;
+    background-color: var(--ghost);
 }
 
 .steel {
-    background-color: #b9b7cf;
+    background-color: var(--steel);
 }
 
 .dragon {
-    background-color: #6f38f6;
+    background-color: var(--dragon);
 }
 
 .fairy {
-    background-color: #f9aec7;
+    background-color: var(--fairy);
 }
 
 .card-pokemon {
@@ -124,7 +145,7 @@ h1 {
     justify-content: space-between;
 }
 
-.types, .modal-types {
+.types, .modal-types, .modal-abilities {
     padding: 0;
     margin: 0;
     list-style: none;
@@ -186,8 +207,6 @@ h1 {
     bottom: 0;
     left: 0;
     transition: all .3s ease;
-    /* text-align: center; */
-    justify-content: space-between;
     flex-direction: column;
 }
 
@@ -207,12 +226,12 @@ h1 {
 .modal-body {
     border-radius: 1rem 1rem 0 0;
     background-color: #fff;
-    position: fixed;
+    position: absolute;
     top: 40%;
     right: 0;
     bottom: 0;
     left: 0;
-    z-index: 1;
+    z-index: -1;
 }
 
 .modal-types {
@@ -221,14 +240,67 @@ h1 {
     justify-content: center;
 }
 
+.modal-about {
+    display: flex;
+    justify-content: center;
+}
+
+.modal-info-title {
+    font-size: 0.875rem;
+    text-align: center;
+}
+
+.modal-abilities {
+    text-transform: capitalize;
+    text-align: center;
+}
+
+.modal-about-weight, .modal-about-height, .modal-about-abilities {
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-about-weight {
+    border-right: 1px solid #E0E0E0;
+}
+
+.modal-about-abilities {
+    border-left: 1px solid #E0E0E0;
+}
+
+.modal-abilities {
+    font-size: 0.625rem;
+    margin: 0;
+}
+
+.modal-about-weight-info, .modal-about-height-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .modal-paragraph{
-    font-size: 1.25rem;
+    font-size: 0.625rem;
+    margin: 0;
     line-height: 25px;
 }
 
+.modal-about-subtitle {
+    font-size: 0.5rem;
+    font-weight: normal;
+    color: #666;
+}
+
+.modal-stats {
+    display: flex;
+}
+
 .modal-img {
-    margin: 0 auto;
-    height: 30%;
+    margin: 15% auto;
+    height: 40%;
     transition: .3s ease;
 }
 
@@ -236,9 +308,6 @@ h1 {
     background: none;
     border: none;
     cursor: pointer;
-    /* position: absolute;
-    top: 5%;
-    left: 5%; */
     transition: .3s;
 }
 
@@ -257,13 +326,15 @@ h1 {
     }
 
     .modal-img {
-        height: 50%;
-        position: absolute;
-        top: -40%;
+        height: 30%;
+        max-width: 90%;
+        /* position: absolute;
+        top: -38%; */
     }
 
     .modal-body {
-        padding-top: 4rem;
+        padding-top: 20%;
+        top: 35%;
     }
 }
 
