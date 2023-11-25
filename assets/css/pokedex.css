@@ -145,7 +145,7 @@ h1 {
     justify-content: space-between;
 }
 
-.types, .modal-types, .modal-abilities {
+.types, .modal-types, .modal-abilities, .modal-stats-name, .modal-stats-value  {
     padding: 0;
     margin: 0;
     list-style: none;
@@ -232,6 +232,10 @@ h1 {
     bottom: 0;
     left: 0;
     z-index: -1;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 
 .modal-types {
@@ -256,7 +260,7 @@ h1 {
 }
 
 .modal-about-weight, .modal-about-height, .modal-about-abilities {
-    padding: 0 2rem;
+    padding: 0 1.563rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -296,6 +300,44 @@ h1 {
 
 .modal-stats {
     display: flex;
+    justify-content: center;
+}
+
+.modal-stats-name, .modal-stats-value {
+    font-size: 0.625rem;
+}
+
+.modal-stats-name {
+    padding-right: 0.5rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-right: 1px solid #E0E0E0;
+}
+
+.modal-stats-value {
+    padding-left: .5rem;
+}
+
+.stats-value {
+    display: grid;
+    grid-template-columns: 10px 2fr;
+    gap: 0.5rem;
+    align-items: center;
+    width: 200px;
+}
+
+.rect-background {
+    width: 180px;
+    height: 4px;
+    border-radius: 999rem;
+    opacity: .2;
+    position: relative;
+}
+
+.rect-stats {
+    height: 4px;
+    border-radius: 999rem;
+    position: relative;
 }
 
 .modal-img {
@@ -328,8 +370,6 @@ h1 {
     .modal-img {
         height: 30%;
         max-width: 90%;
-        /* position: absolute;
-        top: -38%; */
     }
 
     .modal-body {

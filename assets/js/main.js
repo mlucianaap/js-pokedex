@@ -30,10 +30,6 @@ const closeModal = (pokemon) => {
     document.querySelector(".modal").style.display = "none";
 }
 
-const arrow = `<svg width="92" height="16" viewBox="0 0 92 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M91 9C91.5523 9 92 8.55228 92 8C92 7.44772 91.5523 7 91 7V9ZM0.292893 7.29289C-0.0976311 7.68342 -0.0976311 8.31658 0.292893 8.70711L6.65685 15.0711C7.04738 15.4616 7.68054 15.4616 8.07107 15.0711C8.46159 14.6805 8.46159 14.0474 8.07107 13.6569L2.41421 8L8.07107 2.34315C8.46159 1.95262 8.46159 1.31946 8.07107 0.928932C7.68054 0.538408 7.04738 0.538408 6.65685 0.928932L0.292893 7.29289ZM91 7L1 7V9L91 9V7Z" fill="#3864D2"/>
-            </svg>`;
-
 function convertPokemonToModal(pokemon) {
     return `
         <div class="modal-header">
@@ -81,10 +77,22 @@ function convertPokemonToModal(pokemon) {
             <h3 class="modal-info-title" style="var(--${pokemon.type})">Base Stats</h3>
             <div class="modal-stats">
                 <ol class="modal-stats-name">
-                    ${pokemon.stats.map((stat) => `<li>${stat.name.replace("-", " ")}</li>`).join('')}
+                    ${pokemon.stats.map((stat) => `
+                        <div class="stats-name">
+                            <li>${stat.name}</li>
+                        </div>
+                        `).join('')}
                 </ol>
                 <ol class="modal-stats-value">
-                    ${pokemon.stats.map((stat) => `<li>${stat.value}</li>`).join('')}
+                    ${pokemon.stats.map((stat) => `
+                        <div class="stats-value">
+                            <li>${stat.value}</li>
+                        
+                            <div class="rect-stats" style="width: ${stat.value}px;">
+                                <div class="rect-background"></div>
+                            </div>
+                        </div>
+                        `).join('')}
                 </ol>
             </div>
         </div>
@@ -105,14 +113,24 @@ const openModal = (pokemonId) => {
                 pokemon = pokemonApi;
                 console.log(pokemon);
         
-                document.querySelector(".modal").classList.add(pokemon.type);        
+                document.querySelector(".modal").classList.add(pokemon.type);
+                     
                 document.querySelector(".modal").innerHTML = convertPokemonToModal(pokemon);
             }
         })
     });
 
+    document.querySelectorAll(".rect-stats")
+        .forEach((rect) => rect.classList.add(pokemon.type));
+    
+    document.querySelectorAll(".rect-background")
+        .forEach((rect) => rect.classList.add(pokemon.type));
+    
     document.querySelectorAll(".modal-info-title")
         .forEach((title) => title.style.color = searchColor(pokemon.type));
+    
+    document.querySelectorAll(".stats-name")
+        .forEach((name) => name.style.color = searchColor(pokemon.type));
     document.querySelector(".modal").style.display = "flex";
     document.querySelector("[data-close]").addEventListener("click", () => closeModal(pokemon));
 }
