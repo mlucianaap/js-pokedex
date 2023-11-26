@@ -323,7 +323,7 @@ h1 {
     grid-template-columns: 10px 2fr;
     gap: 0.5rem;
     align-items: center;
-    width: 200px;
+    width: 170px;
 }
 
 .rect-background {
@@ -341,7 +341,7 @@ h1 {
 }
 
 .modal-img {
-    margin: 10% auto;
+    margin: 7% auto;
     height: 40%;
     transition: .3s ease;
 }
