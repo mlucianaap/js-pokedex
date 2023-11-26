@@ -327,7 +327,7 @@ h1 {
 }
 
 .rect-background {
-    width: 180px;
+    width: 170px;
     height: 4px;
     border-radius: 999rem;
     opacity: .2;
@@ -341,7 +341,7 @@ h1 {
 }
 
 .modal-img {
-    margin: 15% auto;
+    margin: 10% auto;
     height: 40%;
     transition: .3s ease;
 }
