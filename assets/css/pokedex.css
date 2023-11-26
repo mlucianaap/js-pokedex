@@ -323,11 +323,11 @@ h1 {
     grid-template-columns: 10px 2fr;
     gap: 0.5rem;
     align-items: center;
-    width: 170px;
+    width: 150px;
 }
 
 .rect-background {
-    width: 170px;
+    width: 150px;
     height: 4px;
     border-radius: 999rem;
     opacity: .2;
