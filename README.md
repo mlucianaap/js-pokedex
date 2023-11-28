@@ -11,4 +11,4 @@ Projeto desenvolvido para praticar meus conhecimentos em HTML, CSS e JavaScript 
 - [PokéAPI](https://pokeapi.co/)
 
 ## Como executar? 
-O projeto está disponível em [aqui](https://js-pokedex-mlucianaap.vercel.app/)
+O projeto está disponível [aqui](https://js-pokedex-mlucianaap.vercel.app/)
