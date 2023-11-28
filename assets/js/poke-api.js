@@ -26,8 +26,7 @@ function convertPokeApiDetailToPokemon(pokeDetail) {
             "value": statSlot.base_stat
         }
     })
-
-    console.log(pokemon.stats);
+    
     return pokemon
 }
 

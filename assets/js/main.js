@@ -28,6 +28,7 @@ function convertPokemonToLi(pokemon) {
 const closeModal = (pokemon) => {
     document.querySelector(".modal").classList.remove(pokemon.type);
     document.querySelector(".modal").style.display = "none";
+    document.querySelector("body").classList.remove('stop-scrolling');
 }
 
 function convertPokemonToModal(pokemon) {
@@ -44,57 +45,64 @@ function convertPokemonToModal(pokemon) {
         
         <img class="modal-img" src="${pokemon.photo}" alt="${pokemon.name}">
 
-        <div class="modal-body">
-            
-            <ol class="modal-types">
-                ${pokemon.types.map((type) => `<li class="type ${type}">${type}</li>`).join('')}
-            </ol>
+        <ol class="modal-types">
+            ${pokemon.types.map((type) => `<li class="type ${type}">${type}</li>`).join('')}
+        </ol>
 
-            <h3 class="modal-info-title" style="${getComputedStyle(document.documentElement).getPropertyValue(`--${pokemon.type}`)}">About</h3>
+        <div class="modal-body-info">
+
             <div class="modal-about">
-                <div class="modal-about-weight">
-                    <div class="modal-about-weight-info">
-                        <img src="/assets/images/weight.svg">
-                        <p class="modal-paragraph">${pokemon.weight/10} kg</p>
+                <h3 class="modal-info-title">About</h3>
+                <div class="modal-about-info">
+                    <div class="modal-about-weight">
+                        <div class="modal-about-weight-info">
+                            <img src="/assets/images/weight.svg">
+                            <p class="modal-paragraph">${pokemon.weight/10} kg</p>
+                        </div>
+                        <h4 class="modal-about-subtitle">Weight</h4>
                     </div>
-                    <h4 class="modal-about-subtitle">Weight</h4>
-                </div>
-                <div class="modal-about-height">
-                    <div class="modal-about-height-info">
-                        <img src="/assets/images/straighten.svg">
-                        <p class="modal-paragraph">${pokemon.height/10} m</p>
+                    <div class="modal-about-height">
+                        <div class="modal-about-height-info">
+                            <img src="/assets/images/straighten.svg">
+                            <p class="modal-paragraph">${pokemon.height/10} m</p>
+                        </div>
+                        <h4 class="modal-about-subtitle">Height</h4>
                     </div>
-                    <h4 class="modal-about-subtitle">Height</h4>
-                </div>
-                <div class="modal-about-abilities">
-                    <ol class="modal-abilities">
-                        ${pokemon.abilities.map((ability) => `<li>${ability.replace("-", " ")}</li>`).join('')}
-                    </ol>
-                    <h4 class="modal-about-subtitle">Abilities</h4>
+                    <div class="modal-about-abilities">
+                        <ol class="modal-abilities">
+                            ${pokemon.abilities.map((ability) => `<li>${ability.replace("-", " ")}</li>`).join('')}
+                        </ol>
+                        <h4 class="modal-about-subtitle">Abilities</h4>
+                    </div>
                 </div>
             </div>
 
-            <h3 class="modal-info-title" style="var(--${pokemon.type})">Base Stats</h3>
             <div class="modal-stats">
-                <ol class="modal-stats-name">
-                    ${pokemon.stats.map((stat) => `
-                        <div class="stats-name">
-                            <li>${stat.name}</li>
-                        </div>
-                        `).join('')}
-                </ol>
-                <ol class="modal-stats-value">
-                    ${pokemon.stats.map((stat) => `
-                        <div class="stats-value">
-                            <li>${stat.value}</li>
-                        
-                            <div class="rect-stats" style="width: ${stat.value}px;">
-                                <div class="rect-background"></div>
+                <h3 class="modal-info-title">Base Stats</h3>
+                <div class="modal-stats-info">
+                    <ol class="modal-stats-name">
+                        ${pokemon.stats.map((stat) => `
+                            <div class="stats-name">
+                                <li>${stat.name}</li>
                             </div>
-                        </div>
-                        `).join('')}
-                </ol>
+                            `).join('')}
+                    </ol>
+                    <ol class="modal-stats-value">
+                        ${pokemon.stats.map((stat) => `
+                            <div class="stats-value">
+                                <li>${stat.value}</li>
+                            
+                                <div class="rect-stats" style="width: ${stat.value}px;">
+                                    <div class="rect-background"></div>
+                                </div>
+                            </div>
+                            `).join('')}
+                    </ol>
+                </div>
             </div>
+        </div>
+
+        <div class="modal-body">
         </div>
     `;
 }
@@ -106,15 +114,15 @@ function searchColor(typePokemon) {
 const openModal = (pokemonId) => {
     window.scroll(0,0);
 
+    document.querySelector('body').classList.add('stop-scrolling');
+
     let pokemon;
     pokemons.forEach(element => {
         element.forEach(pokemonApi => {
             if (pokemonApi.number == pokemonId) {
                 pokemon = pokemonApi;
-                console.log(pokemon);
         
-                document.querySelector(".modal").classList.add(pokemon.type);
-                     
+                document.querySelector(".modal").classList.add(pokemon.type);     
                 document.querySelector(".modal").innerHTML = convertPokemonToModal(pokemon);
             }
         })

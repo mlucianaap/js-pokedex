@@ -19,6 +19,8 @@
     --fairy: #f9aec7;
 }
 
+/* Lista de Pokémons */
+
 .pokemons {
     display: grid;
     grid-template-columns: 1fr;
@@ -151,14 +153,21 @@ h1 {
     list-style: none;
 }
 
+.types .type {
+    font-size: .625rem;
+}
+
 .types .type, .modal-types .type {
     color: #fff;
     padding: .25rem .5rem;
     margin: .25rem 0;
-    font-size: .625rem;
     border-radius: 1rem;
     filter: brightness(1.1);
     text-align: center;
+}
+
+.modal-types .type {
+    font-size: .8rem;
 }
 
 .pokemon .detail img {
@@ -172,6 +181,8 @@ h1 {
     height: 100%;
     right: 0;
 }
+
+/* Paginação */
 
 .pagination {
     display: flex;
@@ -197,6 +208,8 @@ h1 {
     background-color: #4d569e;
     cursor: pointer;
 }
+
+/* Modal */
 
 .modal {
     display: none;
@@ -232,31 +245,43 @@ h1 {
     bottom: 0;
     left: 0;
     z-index: -1;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+    padding-top: 10%;
+}
+
+.modal-body-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
 .modal-types {
+    padding-top: 1rem;
     display: flex;
     gap: 1rem;
     justify-content: center;
 }
 
-.modal-about {
+.modal-about, .modal-stats {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-about-info {
     display: flex;
     justify-content: center;
 }
 
 .modal-info-title {
-    font-size: 0.875rem;
+    font-size: 1rem;
     text-align: center;
 }
 
 .modal-abilities {
     text-transform: capitalize;
     text-align: center;
+}
+
+.modal-about img {
+    height: 1.2rem;
 }
 
 .modal-about-weight, .modal-about-height, .modal-about-abilities {
@@ -276,7 +301,7 @@ h1 {
 }
 
 .modal-abilities {
-    font-size: 0.625rem;
+    font-size: 0.8rem;
     margin: 0;
 }
 
@@ -287,24 +312,24 @@ h1 {
 }
 
 .modal-paragraph{
-    font-size: 0.625rem;
+    font-size: 0.8rem;
     margin: 0;
     line-height: 25px;
 }
 
 .modal-about-subtitle {
-    font-size: 0.5rem;
+    font-size: 0.7rem;
     font-weight: normal;
     color: #666;
 }
 
-.modal-stats {
-    display: flex;
-    justify-content: center;
+.modal-stats-info {
+    display: grid;
+    grid-template-columns: 130px 1fr;
 }
 
 .modal-stats-name, .modal-stats-value {
-    font-size: 0.625rem;
+    font-size: 0.8rem;
 }
 
 .modal-stats-name {
@@ -320,28 +345,27 @@ h1 {
 
 .stats-value {
     display: grid;
-    grid-template-columns: 10px 2fr;
-    gap: 0.5rem;
+    grid-template-columns: 10px 1fr;
+    gap: 1rem;
     align-items: center;
-    width: 140px;
+    position: relative;
 }
 
 .rect-background {
-    width: 140px;
-    height: 4px;
+    position: absolute;
+    width: calc(100% - 1.6rem);
+    height: 5px;
     border-radius: 999rem;
     opacity: .2;
-    position: relative;
 }
 
 .rect-stats {
-    height: 4px;
+    height: 5px;
     border-radius: 999rem;
-    position: relative;
 }
 
 .modal-img {
-    margin: 7% auto;
+    margin: 0 auto;
     height: 40%;
     transition: .3s ease;
 }
@@ -357,6 +381,12 @@ h1 {
     transform: translateX(-.5rem);
 }
 
+.stop-scrolling {
+    overflow: hidden;
+}
+
+/* Mobile */
+
 @media screen and (max-width: 480px) {
     .modal {
         padding: 20px;
@@ -368,8 +398,8 @@ h1 {
     }
 
     .modal-img {
+        margin: 7% auto;
         height: 30%;
-        max-width: 90%;
     }
 
     .modal-body {
@@ -391,8 +421,49 @@ h1 {
 }
 
 @media screen and (max-width: 780px) {
+    .modal-types .type {
+        font-size: .625rem;
+    }
+
+    .modal-info-title {
+        font-size: 0.875rem;
+    }
+
+    .modal-abilities {
+        font-size: 0.625rem;
+    }
+
+    .modal-paragraph{
+        font-size: 0.625rem;
+    }
+
+    .modal-about-subtitle {
+        font-size: 0.5rem;
+    }
+    
+    .modal-stats-name, .modal-stats-value {
+        font-size: 0.625rem;
+    }
+    
+    .modal-body-info {
+        display: flex; 
+        flex-direction: column;
+    }
+
+    .modal-stats-info {
+        display: grid;
+        grid-template-columns: 100px 1fr;
+    }
+
     .modal-img {
         width: 100%;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .modal-body-info {
+        display: flex; 
+        flex-direction: column;
     }
 }
 
@@ -403,5 +474,9 @@ h1 {
 
     .card-pokemon {
         cursor: pointer;
+    }
+
+    .modal-body {
+        flex-direction: row;
     }
 }
